@@ -1,0 +1,14 @@
+services:
+    -
+        class: Symplify\PHPStanRules\Collector\NewWithFollowingSettersCollector
+        tags:
+            - phpstan.collector
+        arguments:
+            isEnabled: %symplify.ctor%
+
+    -
+        class: Symplify\PHPStanRules\Rules\NewOverSettersRule
+        tags:
+            - phpstan.rules.rule
+        arguments:
+            isEnabled: %symplify.ctor%

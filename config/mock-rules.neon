@@ -1,0 +1,37 @@
+conditionalTags:
+    # mocking
+    Symplify\PHPStanRules\Rules\PHPUnit\NoMockOnlyTestRule:
+        phpstan.rules.rule: %symplify.mocks%
+    Symplify\PHPStanRules\Rules\PHPUnit\NoMockObjectAndRealObjectPropertyRule:
+        phpstan.rules.rule: %symplify.mocks%
+
+    # overly complicated
+    Symplify\PHPStanRules\Rules\PHPUnit\NoDoubleConsecutiveTestMockRule:
+        phpstan.rules.rule: %symplify.mocks%
+
+    # explicit expects()
+    Symplify\PHPStanRules\Rules\PHPUnit\ExplicitExpectsMockMethodRule:
+        phpstan.rules.rule: %symplify.mocks%
+    Symplify\PHPStanRules\Rules\PHPUnit\AvoidAnyExpectsRule:
+        phpstan.rules.rule: %symplify.mocks%
+    Symplify\PHPStanRules\Rules\PHPUnit\NoWithOnStubRule:
+        phpstan.rules.rule: %symplify.mocks%
+    Symplify\PHPStanRules\Rules\PHPUnit\RequireAtLeastOneRule:
+        phpstan.rules.rule: %symplify.mocks%
+
+    # better alternative than mocks
+    Symplify\PHPStanRules\Rules\Doctrine\NoDocumentMockingRule:
+        phpstan.rules.rule: %symplify.mocks%
+    Symplify\PHPStanRules\Rules\Doctrine\NoEntityMockingRule:
+        phpstan.rules.rule: %symplify.mocks%
+
+services:
+    - Symplify\PHPStanRules\Rules\PHPUnit\NoMockOnlyTestRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\NoMockObjectAndRealObjectPropertyRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\NoDoubleConsecutiveTestMockRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\ExplicitExpectsMockMethodRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\AvoidAnyExpectsRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\NoWithOnStubRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\RequireAtLeastOneRule
+    - Symplify\PHPStanRules\Rules\Doctrine\NoDocumentMockingRule
+    - Symplify\PHPStanRules\Rules\Doctrine\NoEntityMockingRule

@@ -1,0 +1,4 @@
+rules:
+    - Symplify\PHPStanRules\Rules\PHPUnit\PublicStaticDataProviderRule
+    - Symplify\PHPStanRules\Rules\PHPUnit\NoAssertFuncCallInTestsRule
+ě

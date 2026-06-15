@@ -1,0 +1,52 @@
+parameters:
+    symplify:
+        mocks: false
+        ctor: false
+        symfonyReturnType: false
+        laravelReturnType: false
+        pathStrings: false
+
+    # kept flat for backward compatibility, default to the %symplify.*% nested values
+    symfonyReturnType: %symplify.symfonyReturnType%
+    laravelReturnType: %symplify.laravelReturnType%
+    pathStrings: %symplify.pathStrings%
+
+parametersSchema:
+    symplify: structure([
+        mocks: bool()
+        ctor: bool()
+        symfonyReturnType: bool()
+        laravelReturnType: bool()
+        pathStrings: bool()
+    ])
+
+    symfonyReturnType: bool()
+    laravelReturnType: bool()
+    pathStrings: bool()
+
+conditionalTags:
+    # Symfony Container::get($1) => $1 type
+    Symplify\PHPStanRules\ReturnTypeExtension\Symfony\ContainerGetReturnTypeExtension:
+        phpstan.broker.dynamicMethodReturnTypeExtension: %symplify.symfonyReturnType%
+
+    # Symfony Finder SplFileInfo::getRealPath() => string type
+    Symplify\PHPStanRules\ReturnTypeExtension\Symfony\SplFileInfoTolerantReturnTypeExtension:
+        phpstan.broker.dynamicMethodReturnTypeExtension: %symplify.symfonyReturnType%
+
+    # Laravel Container::make($1) => $1 type
+    Symplify\PHPStanRules\ReturnTypeExtension\Laravel\LaravelContainerMakeTypeExtension:
+        phpstan.broker.dynamicMethodReturnTypeExtension: %symplify.laravelReturnType%
+
+    # getcwd()/dirname()/realpath() => always "string"
+    Symplify\PHPStanRules\ReturnTypeExtension\NativeFunctionReturnTypeExtension:
+        phpstan.broker.dynamicFunctionReturnTypeExtension: %symplify.pathStrings%
+
+services:
+    # use with "errorFormat: symplify" in CLI/config
+    errorFormatter.symplify:
+        class: Symplify\PHPStanRules\ErrorFormatter\SymplifyErrorFormatter
+
+    - Symplify\PHPStanRules\ReturnTypeExtension\Symfony\ContainerGetReturnTypeExtension
+    - Symplify\PHPStanRules\ReturnTypeExtension\Symfony\SplFileInfoTolerantReturnTypeExtension
+    - Symplify\PHPStanRules\ReturnTypeExtension\Laravel\LaravelContainerMakeTypeExtension
+    - Symplify\PHPStanRules\ReturnTypeExtension\NativeFunctionReturnTypeExtension
