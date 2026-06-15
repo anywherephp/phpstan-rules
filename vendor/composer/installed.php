@@ -3,7 +3,7 @@
         'name' => 'symplify/phpstan-rules',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1dbcc1b8334585ef0b46b947ac59bc9276c8b891',
+        'reference' => 'f8ababbb55e552fc2e3b86ec5809835f82f1211b',
         'type' => 'phpstan-extension',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'symplify/phpstan-rules' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1dbcc1b8334585ef0b46b947ac59bc9276c8b891',
+            'reference' => 'f8ababbb55e552fc2e3b86ec5809835f82f1211b',
             'type' => 'phpstan-extension',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
